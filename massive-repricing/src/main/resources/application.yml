@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: massive-repricing
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8081
+
+aws:
+  s3:
+    bucket-name: ${S3_BUCKET:sky-keplero-dev}
+    region: ${AWS_REGION:eu-west-1}
+    input-file-prefix: ${INPUT_FILES:massive-repricing/input-files}
+    error-file-prefix: ${ERROR_FILES:massive-repricing/error-files}
+    processed-file-prefix: ${PROCESSED_FILES:massive-repricing/processed-files}
+  secrets-manager:
+    name: ${AWS_SECRETS}
+    enabled: true
